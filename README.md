@@ -28,3 +28,8 @@
 
 ### deploy notice
 原本run container為`docker container run -it -p 80:8000 flask /bin/bash`，後方加入/bin/bash導致沒有成功部署，查詢原因flask本身就是一個process，如果/bin/bash被執行flask這個process就不會執行。
+
+### 成果畫面
+記得是http, 除非有設定ssl才是https
+![http](https://github.com/SiaoChi/flask-deploy-test/assets/98171354/ed0f990b-2dd6-49b9-bf14-1476af54f4cb)
+
