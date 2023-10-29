@@ -1,5 +1,10 @@
 # flask-deploy-test
 
+## 專案結構
+1. 使用docker手動 run container 搭配 dockerfile
+2. nginx - gunicorn - flask(python)
+![flask-structure](https://github.com/SiaoChi/flask-deploy-test/assets/98171354/38d2d3eb-a29d-48ee-9869-b33b46b7949c)
+
 ## 部署流程
 
 ### local application config
@@ -14,9 +19,12 @@
 3. git pull 資料
 4. touch .env 並把環境變數更新
 5. build image : 於project資料夾中run build Dockerfile `docker build -t {image name} .` 
-6. run container : `docker container run -it -p 80:8000 flask`
+6. run container : `docker container run -it -p 8000:8000 flask`
 7. `control p control q`退出container
-8. 透過EC2 IP應該就可以進去網站
+8. run container : nginx -p 80:80
+9. 修改 nginx.config檔案設定，包含proxy IP
+10. 設定完成重新reload檔案指令 `docker exec -it your_nginx_container_name nginx -s reload`
+11. 完成
 
 ### deploy notice
 原本run container為`docker container run -it -p 80:8000 flask /bin/bash`，後方加入/bin/bash導致沒有成功部署，查詢原因flask本身就是一個process，如果/bin/bash被執行flask這個process就不會執行。
