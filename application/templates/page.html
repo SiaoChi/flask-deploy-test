@@ -1,0 +1,25 @@
+<h1>Template - Page </h1>
+{% if text != undefined %}
+<h2>{{text}}</h2>
+{% endif %}
+
+{% if appInfo != undefined %}
+<h2>AppInfo : </h2>
+<p>id : {{appInfo.id}}</p>
+<p>name : {{appInfo.name}}</p>
+<p>version : {{appInfo.version}}</p>
+<p>author : {{appInfo.author}}</p>
+<p>remark : {{appInfo.remark}}</p>
+{% endif %}
+
+{% if data != undefined %}
+<h2>Data : </h2>
+<table border="1">
+    {% for key, value in data.items() %}
+    <tr>
+        <th> {{ key }} </th>
+        <td> {{ value }} </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
