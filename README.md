@@ -27,7 +27,7 @@
 11. 完成
 
 ### deploy notice
-原本run container為`docker container run -it -p 80:8000 flask /bin/bash`，後方加入/bin/bash導致沒有成功部署，查詢原因flask本身就是一個process，如果/bin/bash被執行flask這個process就不會執行。
+原本run container為`docker container run -it -p 80:8000 flask /bin/bash`，後方加入/bin/bash導致沒有成功部署，查詢原因flask本身就是一個process，如果/bin/bash被執行flask這個process就不會執行。＊不放的/bin/bash就是預設的CMD
 
 ### 成果畫面
 記得是http, 除非有設定ssl才是https
