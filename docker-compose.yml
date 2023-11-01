@@ -1,0 +1,22 @@
+version: '3'
+services:
+  nginx:
+    container_name: nginx  
+    build:
+      context: ./nginx  
+    ports:
+      - "80:80"  
+    networks:
+      - my_network  
+
+  flask:
+    container_name: flask  
+    build:
+      context: .  
+    ports:
+      - "8000:8000"  
+    networks:
+      - my_network 
+
+networks:
+  my_network:  # 定義自定義網絡
