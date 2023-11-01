@@ -1,6 +1,7 @@
 
 from flask import Flask, redirect, render_template, request, url_for
 from flask_pymongo import PyMongo
+from flask_cors import CORS
 import os
 from dotenv import load_dotenv
 from .views import view_blueprint
@@ -13,6 +14,7 @@ pjdir = os.path.abspath(os.path.dirname(__file__))
 # export FLASK_DEBUG=1 調整debug模式 in terminal
 
 app = Flask(__name__)
+CORS(app)
 # app.register_blueprint
 app.register_blueprint(view_blueprint)
 app.config["MONGO_URI"] = os.getenv('MONGODB_URI')
@@ -44,4 +46,4 @@ print(db)
 '''
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True)
