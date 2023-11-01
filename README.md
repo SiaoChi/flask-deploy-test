@@ -3,7 +3,8 @@
 ## 專案結構
 1. 使用docker手動 run container 搭配 dockerfile
 2. nginx - gunicorn - flask(python)
-![flask-structure](https://github.com/SiaoChi/flask-deploy-test/assets/98171354/38d2d3eb-a29d-48ee-9869-b33b46b7949c)
+![flask-structure](https://github.com/SiaoChi/flask-deploy-test/assets/98171354/6ffa93f9-5b5b-4715-a4c0-6d4a5206b179)
+
 
 ## 部署流程
 
@@ -29,7 +30,6 @@
 ### deploy notice
 原本run container為`docker container run -it -p 80:8000 flask /bin/bash`，後方加入/bin/bash導致沒有成功部署，查詢原因flask本身就是一個process，如果/bin/bash被執行flask這個process就不會執行。＊不放的/bin/bash就是預設的CMD
 
-### 成果畫面
+### 使用IP連線
 記得是http, 除非有設定ssl才是https
-![http](https://github.com/SiaoChi/flask-deploy-test/assets/98171354/ed0f990b-2dd6-49b9-bf14-1476af54f4cb)
 
