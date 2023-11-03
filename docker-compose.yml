@@ -1,7 +1,7 @@
 version: '3'
 services:
   nginx:
-    container_name: nginx  
+    container_name: nginx
     build:
       context: ./nginx  
     ports:
@@ -13,10 +13,12 @@ services:
     container_name: flask  
     build:
       context: .  
-    ports:
-      - "8000:8000"  
+    ports: 
+      - "8000:8000"  #實際上不一定要加，因為nginx有設定proxy_pass+相同network
     networks:
       - my_network 
 
 networks:
-  my_network:  # 定義自定義網絡
+  my_network:  
+
+# 指令 docker-compose build --no-cache (不使用快取要加入，但會比較慢)
