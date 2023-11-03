@@ -1,4 +1,8 @@
 FROM nginx
-WORKDIR /etc/nginx/conf.d
-COPY ./nginx.conf .
+
+RUN rm /etc/nginx/conf.d/nginx.conf/default.conf
+# 複製 nginx.conf 到容器的 /etc/nginx/conf.d 目錄
+COPY ./default.conf /etc/nginx/conf.d/nginx.conf/
+
+# 啟動 Nginx 並讓它以前台方式運行
 CMD ["nginx", "-g", "daemon off;"]
