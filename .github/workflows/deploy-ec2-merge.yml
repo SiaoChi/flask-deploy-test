@@ -23,7 +23,7 @@ jobs:
             cd /home/ubuntu/flask-deploy-test
             docker system prune -a -f
             docker volume prune -f
-            docker-compose down
+            docker compose down
             git switch develop
             git pull origin develop
-            docker-compose up -d --build
+            docker compose up -d --build
