@@ -1,0 +1,7 @@
+FROM nginx
+
+# 複製 nginx.conf 到容器的 /etc/nginx/conf.d 目錄
+COPY ./nginx.conf /etc/nginx/conf.d
+
+# 啟動 Nginx 並讓它以前台方式運行
+CMD ["nginx", "-g", "daemon off;"]

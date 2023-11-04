@@ -62,8 +62,11 @@ def success(name):
 @view_blueprint.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
-        user = request.form['nm']
-        return redirect(url_for('views.success', name=user))
+        user = request.form.get('nm')  # 使用 get 方法避免可能的 KeyError
+        if user:
+            return redirect(url_for('views.success', name=user))
+        else:
+            return 'Invalid input. Please provide a name.'
     else:
         return render_template('login.html')
 

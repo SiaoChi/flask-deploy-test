@@ -1,0 +1,29 @@
+name: Deploy to EC2 on merge
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # - name: Checkout code
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 18
+      - name: deploy to ec2
+        uses: appleboy/ssh-action@master
+        with:
+          host: "${{ secrets.FLASK_HOST_DNS }}"
+          username: "${{ secrets.EC2_USERNAME }}"
+          key: "${{ secrets.EC2_SSH_KEY }}"
+          script: |
+            echo "Hello from github action, start deploy branch-stage to ec2"
+            cd /home/ubuntu/flask-deploy-test
+            docker system prune -a -f
+            docker volume prune -f
+            docker compose down
+            git switch develop
+            git pull origin develop
+            docker compose up -d --build
