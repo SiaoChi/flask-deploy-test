@@ -6,7 +6,7 @@
 ![flask-structure](https://github.com/SiaoChi/flask-deploy-test/assets/98171354/6ffa93f9-5b5b-4715-a4c0-6d4a5206b179)
 
 
-## 部署流程
+## 手動部署流程
 
 ### local application config
 1. install gunicorn
@@ -29,6 +29,10 @@
 
 ### deploy notice
 原本run container為`docker container run -it -p 80:8000 flask /bin/bash`，後方加入/bin/bash導致沒有成功部署，查詢原因flask本身就是一個process，如果/bin/bash被執行flask這個process就不會執行。＊不放的/bin/bash就是預設的CMD
+
+## 自動部署流程
+1. 依據Dockerfile.nginx ,  Dockerfile.flask 兩個dockerfile部署
+2. 因有多個container因此另外使用docker compose  `docker compose up`
 
 ### 使用IP連線
 記得是http, 除非有設定ssl才是https
